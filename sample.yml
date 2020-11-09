@@ -1,6 +1,6 @@
 ---
  - name: Ansible archive Example
-   user: root
+   user: anstadm
    hosts: all
    tasks:
     - name: Compress the file and remove
