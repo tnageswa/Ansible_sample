@@ -6,7 +6,7 @@
     - name: Compress the file and remove
       become: yes
       archive:
-        path: /home/db2inst1/sqllib/db2dump/db2diag.log
-        dest: /home/db2inst1/sqllib/db2dump/db2diag.log.gz
+        path: /tmp/db2diag.log
+        dest: /tmp/db2diag.log.gz
         remove: yes
 
