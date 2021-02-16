@@ -1,8 +1,8 @@
 ---
 - name: touch test
    user: anstadm
+ become: yes
    hosts: all
- tasks:
   file:
     path: "/etc/nag_uid_test"
     owner: "anstadm"
