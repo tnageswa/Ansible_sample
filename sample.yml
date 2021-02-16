@@ -1,14 +1,10 @@
 ---
- - name: update SUSE patches
+- name: touch test
+   user: anstadm
    hosts: all
-   become: yes
-   become_user: anstadm
-   any_errors_fatal: false
-   tasks:
-   - name: Create a file
-     file:
-      dest: /etc/nag.txt
-      state: touch
-      owner: root
-      group: root
-      mode: '0644'
+ tasks:
+  file:
+    path: "/etc/nag_uid_test"
+    owner: "anstadm"
+    group: "anstadm"
+    state: touch
