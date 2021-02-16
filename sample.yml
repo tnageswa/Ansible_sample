@@ -1,6 +1,8 @@
-- name: touch test
+---
+
+- hosts: all
+  tasks:
+  - name: Creating an empty file
     file:
-    path: "/etc/nag_uid_test"
-    owner: "anstadm"
-    group: "anstadm"
-    state: touch
+      path: "/etc/nag.txt"
+      state: touch
