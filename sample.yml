@@ -1,12 +1,14 @@
 ---
- - name: Ansible archive Example
-   user: anstadm
+ - name: update SUSE patches
    hosts: all
+   become: yes
+   become_user: anstadm
+   any_errors_fatal: false
    tasks:
-    - name: Compress the file and remove
-      become: yes
-      archive:
-        path: /tmp/db2diag.log
-        dest: /tmp/db2diag.log.gz
-        remove: yes
-
+   - name: Create a file
+     file:
+      dest: /etc/nag.txt
+      state: touch
+      owner: root
+      group: root
+      mode: '0644'
