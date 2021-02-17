@@ -1,6 +1,6 @@
 ---
 
- - hosts: b23leilapp04
+ - hosts: all
   remote_user: anstadm
   become: true
   become_method: sudo
