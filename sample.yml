@@ -1,8 +1,10 @@
 ---
 
-  hosts: all
-  become: yes
-  become_user: anstadm 
+ - hosts: b23leilapp04
+  remote_user: anstadm
+  become: true
+  become_method: sudo
+  tasks:
   - name: create fake 'nologin' shell
   file: path=/etc/nologin state=touch owner=root group=sys mode=0555
   
