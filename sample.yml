@@ -1,9 +1,8 @@
 ---
 
-- hosts: all
+  hosts: all
   become: yes
   become_user: anstadm 
-  tasks:
-  - name: Create file
-  command: touch /etc/foo.conf
+  - name: create fake 'nologin' shell
+  file: path=/etc/nologin state=touch owner=root group=sys mode=0555
   
