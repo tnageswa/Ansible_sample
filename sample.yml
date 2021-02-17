@@ -6,5 +6,4 @@
   tasks:
   - name: Create file
   command: touch /etc/foo.conf
-  args:
-    creates: /etc/foo.conf
+  
