@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  remote_user: anstadm
   become: true
   tasks:
   - name: Create directory
