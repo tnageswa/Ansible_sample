@@ -1,10 +1,7 @@
 ---
-
- - hosts: all
-  remote_user: anstadm
+- hosts: webservers
   become: true
-  become_method: sudo
   tasks:
-  - name: create fake 'nologin' shell
-  file: path=/etc/nologin state=touch owner=root group=sys mode=0555
+  - name: Create a file
+    file: path=/home/anstadm/nag.txt state=touch
   
