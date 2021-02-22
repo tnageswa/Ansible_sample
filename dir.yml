@@ -1,7 +1,6 @@
 ---
 - hosts: all
   become: true
-  become_user: root
   tasks:
   - name: Create directory
-    file: path=/etc/nagesh state=directory mode=775 owner=anstadm group=anstadm
+    file: path=/etc/nagesh state=directory mode=775 owner=root group=root
