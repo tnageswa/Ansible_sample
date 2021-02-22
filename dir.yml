@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: true
+  become: yes
   tasks:
   - name: Create directory
     file: path=/etc/nagesh state=directory mode=775 owner=root group=root
