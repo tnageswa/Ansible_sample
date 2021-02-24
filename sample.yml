@@ -1,7 +1,6 @@
 ---
 - hosts: all
-  become: yes
-  become_method: enable
+  become: true
   vars: 
    ansible_python_interpreter: /usr/bin/python
   tasks:
