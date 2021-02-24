@@ -1,7 +1,8 @@
 ---
 - hosts: all
   become: yes
-  vars: ansible_python_interpreter: /usr/bin/python
+  vars:
+   ansible_python_interpreter: /usr/bin/python
   tasks:
   - name: Create directory
     file: path=/etc/nagesh state=directory mode=775 owner=root group=root
