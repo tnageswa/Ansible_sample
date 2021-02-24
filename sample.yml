@@ -3,5 +3,5 @@
   become: true
   tasks:
   - name: Create a file
-    file: path=/home/anstadm/nag.txt state=touch
+    file: path=/home/ansadmin/nag.txt state=touch
   
