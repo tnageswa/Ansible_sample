@@ -1,8 +1,8 @@
 ---
 - hosts: all
   become: yes
-  become_method: su
-  become_user: nobody
+  become_method: sudo
+  become_user: ansadmin
   vars: 
    ansible_python_interpreter: /usr/bin/python
   tasks:
