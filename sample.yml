@@ -7,6 +7,6 @@
   tasks:
   - name: Create a file
     file: 
-    path= "/home/ansadmin/nag.txt"
-    state=touch
+     path: "/home/ansadmin/nag.txt"
+     state: touch
   
