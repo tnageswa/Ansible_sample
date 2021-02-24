@@ -6,6 +6,6 @@
   tasks:
   - name: Create a file
     file: 
-     path: "/etc/nag.txt"
+     path: "/etc/nagesh.txt"
      state: touch
   
