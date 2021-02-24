@@ -1,7 +1,8 @@
 ---
 - hosts: all
-  become: true
-  connection: ssh 
+  become: yes
+  become_method: su
+  become_user: nobody
   vars: 
    ansible_python_interpreter: /usr/bin/python
   tasks:
