@@ -1,8 +1,6 @@
 ---
 - hosts: all
   become: yes
-  vars:
-   ansible_python_interpreter: /usr/bin/python
-  tasks:
+   tasks:
   - name: Create directory
     file: path=/etc/nage state=directory mode=775 owner=root group=root
