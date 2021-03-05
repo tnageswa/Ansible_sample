@@ -1,5 +1,5 @@
 ---
-- hosts: tag_Ansible_Slave
+- hosts: group1
   user: ec2-user
   sudo: yes
   tasks:
