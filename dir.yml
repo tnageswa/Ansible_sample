@@ -1,6 +1,7 @@
 ---
-- hosts: all
-  become: yes
-   tasks:
+- hosts: tag_Ansible_Slave
+  user: ec2-user
+  sudo: yes
+  tasks:
   - name: Create directory
     file: path=/etc/nage state=directory mode=775 owner=root group=root
