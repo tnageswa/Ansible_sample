@@ -1,7 +1,7 @@
 ---
-- hosts: group1
+- hosts: all
   user: ec2-user
-  sudo: yes
+  become: true
   tasks:
   - name: Create directory
     file: path=/etc/nage state=directory mode=775 owner=root group=root
