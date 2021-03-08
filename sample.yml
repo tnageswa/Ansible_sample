@@ -3,7 +3,5 @@
   become: true
   tasks:
   - name: Create a file
-    file: 
-    path: "/etc/tushar.txt"
-    state: touch
+    file: path=/etc/tushar.txt state=touch
   
