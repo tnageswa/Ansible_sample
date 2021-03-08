@@ -1,9 +1,7 @@
 ---
  - hosts: all
    become: true
-
    tasks: 
-
    - name: upgrade all packages, excluding kernel
      yum:
      name: '*'
