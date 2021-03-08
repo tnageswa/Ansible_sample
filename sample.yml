@@ -1,11 +1,9 @@
 ---
 - hosts: all
   become: true
-  vars: 
-   ansible_python_interpreter: /usr/bin/python
   tasks:
   - name: Create a file
     file: 
-     path: "/etc/tushar.txt"
-     state: touch
+    path: "/etc/tushar.txt"
+    state: touch
   
