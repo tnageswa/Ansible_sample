@@ -2,8 +2,9 @@
 #Can as per our requirement Nagesh 24/02/2021
 
 - hosts: all
-  become_user: root
-  serial: 2
+   user: ec2-user
+   become: true
+   serial: 2
 
 
  tasks:
