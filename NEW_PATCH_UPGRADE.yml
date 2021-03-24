@@ -6,14 +6,12 @@
   any_errors_fatal: false
   vars:
    patch_list:
-   - curl
-   - dbus
-   - dbus-common
-   - dbus-daemon
-   - dbus-libs
-   - dbus-tools
-   - device-mapper
-   - device-mapper-libs
+   - dnf-plugin-subscription-manager
+   - freetype
+   - glibc
+   - glibc-common
+   - glibc-langpack-en
+
    random_number: "{{ 10000 | random }}"
 
   tasks:
