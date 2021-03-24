@@ -1,0 +1,28 @@
+---
+ - name: Prompt for user input
+   hosts: group1 
+   user: ec2-user
+   become: true   
+   gather_facts: no
+   vars_prompt:
+  
+     - name: user_name
+       prompt: Enter your user name
+       private: no
+     - name: password
+       prompt: Enter your password
+       private: yes
+   vars:
+     username: user_name
+   tasks:
+     - name: Create user account
+       command : useradd {{ user_name}}
+     - name: add the user to groups
+       command : usermod -a -G smbgrp {{ user_name }}
+     - name: Samba password for user
+       ##shell: "(echo {{ item['password'] }}; echo {{ item['password'] }}) | smbpasswd  -a {{ item['user_name'] }}"
+       ##shell: "(echo -e New SMB password:{{ password }}\nNew SMB password:{{ password }}) | smbpasswd -a {{ smbuser }}"
+       ##with_items: "{{ username }}"
+       command: echo -ne "{{ user_name }}\n{{ password }}\n" | smbpasswd -a -s {{ user_name }}
+     ##- debug:
+         ##msg: "The username is {{ user_name}} and password is {{ password }}"
