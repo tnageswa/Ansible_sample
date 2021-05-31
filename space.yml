@@ -14,7 +14,8 @@
 
      - name: Get disk size 
        set_fact:
-           diskSize: "{{mountresponse.stdout}}"
+           diskSize: "{{ (mount.size_total / 1000000000) | round(1, 'common') }}GB"
+           
 
      - name: ensure the file size
        fail:
