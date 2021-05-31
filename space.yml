@@ -18,7 +18,7 @@
 
      - name: ensure the file size
        fail:
-         msg: "{{volumeName}} size is {{diskSize}} . It should be increased to {{expectedSize}}"
+         msg: "{{volumeName}} size is {{diskSize}} . It should be increased to 5G"
        when: "diskSize != expectedSize"
-       vars:
-         expectedSize='5G'
+       ##vars:
+        ##expectedSize='5G'
