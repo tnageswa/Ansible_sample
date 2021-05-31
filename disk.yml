@@ -5,9 +5,15 @@
    become: true
    any_errors_fatal: false
    tasks: 
-     - name: Ensure that free space on {{ mountname }} is grater than 30%
+     - name: Test for available disk space
+       setup: filter=ansible_mounts
+       
+     - name: Ensure that free space on the tested volume is greater than 20%
        assert:
-          that: mount.size_available > mount.size_total|float * 0.3
-          msg: disk space has reached 70% threshold
+         that:
+           - mount.size_available > mount.size_total|float * 0.2
+         msg: Disk space has reached 95% threshold
        vars:
-          mount: "{{ ansible_mounts | selectattr('mount','equalto',mountname) | list | first }}"
+         mount: "{{ ansible_mounts | selectattr('mount','equalto',item.mount) | list | first }}"
+       with_items:
+         - "{{ ansible_mounts }}"
