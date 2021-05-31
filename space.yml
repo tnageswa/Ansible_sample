@@ -6,19 +6,19 @@
   gather_facts: yes
   tasks:
      - name: Get Disk Size 
-  shell: |
-    mountresult=$(mount | grep  {{ volumeName }} | awk '{print $1}')
-    multipath -l $mountresult | grep 'size=' | awk '{print $1}' | awk -F'=' '{print $2}'    
-  register: mountresponse
-  delegate_to: "{{ node_volume_mounted }}"
+       shell: |
+          mountresult=$(mount | grep  {{ volumeName }} | awk '{print $1}')
+          multipath -l $mountresult | grep 'size=' | awk '{print $1}' | awk -F'=' '{print $2}'    
+       register: mountresponse
+       delegate_to: "{{ node_volume_mounted }}"
 
-- name: Get disk size 
-  set_fact:
-    diskSize: "{{mountresponse.stdout}}"
+     - name: Get disk size 
+       set_fact:
+           diskSize: "{{mountresponse.stdout}}"
 
-- name: ensure the file size
-  fail:
-    msg: "{{volumeName}} size is {{diskSize}} . It should be increased to {{expectedSize}}"
-  when: "diskSize != expectedSize"
-  vars:
-    expectedSize='5G'
+     - name: ensure the file size
+       fail:
+         msg: "{{volumeName}} size is {{diskSize}} . It should be increased to {{expectedSize}}"
+       when: "diskSize != expectedSize"
+       vars:
+         expectedSize='5G'
