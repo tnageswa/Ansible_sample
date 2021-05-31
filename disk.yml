@@ -5,7 +5,7 @@
    become: true
    any_errors_fatal: false
    tasks: 
-      tasks:
+     
      - name: Collect only facts about hardware
        setup:
          gather_subset:
