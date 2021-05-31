@@ -1,22 +1,24 @@
 ---
- - name: Upgrade patches on Host(s)
+ - name: Free Disk space on Host(s)
    hosts: 9.190.27.146
    user: anstadm
    become: true
    any_errors_fatal: false
    tasks: 
+      tasks:
      - name: Collect only facts about hardware
        setup:
          gather_subset:
            - 'hardware'
+
      - name: Test for available disk space
        setup: filter=ansible_mounts
        
-     - name: Ensure that free space on the tested volume is greater than 60%
+     - name: Ensure that free space on the tested volume is greater than 15%
        assert:
-         that: 
-          - mount.size_available > mount.size_total|float * 0.6
-         msg: Disk space has reached 40% threshold
+         that:
+           - mount.size_available > mount.size_total|float * 0.05
+         msg: Disk space has reached 95% threshold
        vars:
          mount: "{{ ansible_mounts | selectattr('mount','equalto',item.mount) | list | first }}"
        with_items:
