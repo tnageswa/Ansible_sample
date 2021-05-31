@@ -10,7 +10,7 @@
       - name: show disk space                                                                                                                         
         debug: msg="{{ ((mount.size_total - mount.size_available) / 1000000000) |  round(1,'common') }}GB of {{ (mount.size_total / 1000000000)|round(1, 'common') }}GB ({{ (100 * ( (mount.size_total - mount.size_available) / mount.size_available)) | round(1, 'common')}}%)"                     
         vars:                                                                                                                                         
-          mount: "{{ ansible_mounts | first }}"                                                                                                       
+          mount: "{{ ansible_mounts }}"                                                                                                       
         tags: disk                                                                                                                                    
                                                                                                                                                 
       - name: ensure at least 20% free                                                                                               
@@ -18,4 +18,4 @@
          that: mount.size_available > mount.size_total|float * 0.2                                                                         
          msg: Disk space is near full!                                                                         
         vars:                                                                                                                                         
-          mount: "{{ ansible_mounts | first }}" 
+          mount: "{{ ansible_mounts }}" 
