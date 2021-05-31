@@ -15,7 +15,7 @@
                                                                                                                                                 
       - name: ensure at least 20% free                                                                                               
         assert:                                                                                                                                       
-         that: mount.size_available > mount.size_total|float * 0.2                                                                         
+         that: mount.size_available > mount.size_total|float * 0.5                                                                         
          msg: Disk space is near full!                                                                         
         vars:                                                                                                                                         
           mount: "{{ ansible_mounts | first }}" 
