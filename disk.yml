@@ -6,20 +6,16 @@
    any_errors_fatal: false
    tasks: 
      
-     - name: Collect only facts about hardware
-       setup:
-         gather_subset:
-           - 'hardware'
-
-     - name: Test for available disk space
-       setup: filter=ansible_mounts
-       
-     - name: Ensure that free space on the tested volume is greater than 15%
-       assert:
-         that:
-           - mount.size_available > mount.size_total|float * 0.05
-         msg: Disk space has reached 95% threshold
-       vars:
-         mount: "{{ ansible_mounts | selectattr('mount','equalto',item.mount) | list | first }}"
-       with_items:
-         - "{{ ansible_mounts }}"
+         
+      - name: show disk space                                                                                                                         
+        debug: msg="{{ ((mount.size_total - mount.size_available) / 1000000000) |  round(1,'common') }}GB of {{ (mount.size_total / 1000000000)|round(1, 'common') }}GB ({{ (100 * ( (mount.size_total - mount.size_available) / mount.size_available)) | round(1, 'common')}}%)"                     
+        vars:                                                                                                                                         
+          mount: "{{ ansible_mounts | first }}"                                                                                                       
+        tags: disk                                                                                                                                    
+                                                                                                                                                
+      - name: ensure at least 20% free                                                                                               
+        assert:                                                                                                                                       
+         that: mount.size_available > mount.size_total|float * 0.2                                                                         
+         msg: Disk space is near full!                                                                         
+        vars:                                                                                                                                         
+          mount: "{{ ansible_mounts | first }}" 
