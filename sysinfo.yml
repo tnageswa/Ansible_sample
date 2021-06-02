@@ -22,7 +22,7 @@
         
      - name: Execute the df command
        register: dfout
-       command: "df -h"
+       command: "df -gh"
 
      - debug:
           var: dfout.stdout
