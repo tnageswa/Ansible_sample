@@ -13,12 +13,11 @@
        debug: var=uptime
        
      - name: Hardware info
-       vars:
-        msg: |
-          RAM: {{ ansible_memtotal_mb }}
-          SWAP: {{ ansible_memory_mb.swap.total }}
+       shell: free
+       register: freeout
+        
        debug:
-        msg: "{{ msg.split('\n') }}" 
+        msg: "{{ freeout.stdout }}" 
         
      - name: Execute the df command
        register: dfout
