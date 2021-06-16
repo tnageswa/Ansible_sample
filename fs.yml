@@ -13,4 +13,4 @@
       args:
         creates: /test1
     - name: mount /test1
-      mount: name=/test1 src=/dev/testlv state=mounted fstype=jfs2
+      mount: name=/test1 src="/dev/testlv" state=mounted fstype=jfs2
